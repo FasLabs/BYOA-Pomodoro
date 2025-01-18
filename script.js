@@ -67,7 +67,6 @@ function resetTimer() {
     startButton.textContent = 'Start';
     modeText.textContent = 'Work Time';
     updateDisplay();
-    document.body.classList.remove('break-mode');
 }
 
 // Initialize
@@ -78,6 +77,12 @@ updateDisplay();
 startButton.addEventListener('click', startTimer);
 resetButton.addEventListener('click', resetTimer);
 toggleButton.addEventListener('click', () => {
+    if (timerId !== null) {
+        // If timer is running, stop it
+        clearInterval(timerId);
+        timerId = null;
+        startButton.textContent = 'Start';
+    }
     switchMode();
     toggleButton.textContent = isWorkTime ? 'Switch to Break' : 'Switch to Work';
 });

@@ -1,1 +1,1 @@
-[] Change the page header
+[] Fix switch to break not updating the timer value
